@@ -30,7 +30,7 @@ export default function Login() {
 
     return (
         <div>
-            <h1>Login Page</h1>
+            <h1 className="text-3xl font-bold text-center">Login Page</h1>
             <form onSubmit = {handleSubmit}>
                 <div>
                     <label htmlFor="email">Email:</label>
@@ -46,6 +46,7 @@ export default function Login() {
             
 
             <GoogleButton onClick={ () => signIn('google')} ></GoogleButton>
+            
         </div>
     )
 }
