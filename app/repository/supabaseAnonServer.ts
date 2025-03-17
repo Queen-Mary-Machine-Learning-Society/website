@@ -17,7 +17,7 @@ type SignUpResult = {
     error?: string | null;
   };
 
-const HandleSignUp = async (email: string, password: string, firstname: string, lastname: string) => {
+export const HandleSignUp = async (email: string, password: string, firstname: string, lastname: string) => {
 
     //Sign up the user using the supabaseAnon client
     console.log("Signing up user" + email + " " + password + " " + firstname + " " + lastname);
@@ -49,5 +49,34 @@ const HandleSignUp = async (email: string, password: string, firstname: string, 
     }
   };
 
-  export default HandleSignUp;
+export const HandleLogin = async (email: string, password: string) => {
+    const { data, error } = await supabaseAnon.auth.signInWithPassword({
+      email: email,
+        password: password,
+    });
+    if (error) {
+      console.error('Error signing in:', error.message);
+      return { error: error.message };
+    } else {
+      console.log('User signed in');
+      return { data: data, error: null };
+    }
+  };
+
+
+  export const HandleLoginWithGoogle = async () => {
+    // Start the OAuth flow with Google
+    console.log('Starting OAuth flow with Google...');
+    const { error } = await supabaseAnon.auth.signInWithOAuth({
+      provider: 'google',
+    });
+  
+    if (error) {
+      console.error('Error starting OAuth flow:', error.message);
+      return { error: error.message };
+    }
+    console.log('OAuth sign-in initiated. Waiting for callback...');
+    return { error: null };
+  };
+  
   

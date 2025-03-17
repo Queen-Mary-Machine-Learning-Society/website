@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import HandleSignUp from "../../repository/supabaseAnonServer";
+import { HandleSignUp } from "../../repository/supabaseAnonServer";
 
 export default function SignUp() {
     
@@ -29,6 +29,10 @@ export default function SignUp() {
             setError("Error creating user");
         }
         else {
+            alert(
+                "You have registered. Verify your email to complete the process."
+            );
+            window.location.href = "/login";
         }
 
 

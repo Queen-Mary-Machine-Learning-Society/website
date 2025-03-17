@@ -1,8 +1,10 @@
 "use client";
 
 import GoogleButton from "react-google-button";
-import { signIn } from "next-auth/react";
+
 import { useState } from "react";
+
+import { HandleLogin, HandleLoginWithGoogle } from "../../repository/supabaseAnonServer";
 
 
 export default function Login() {
@@ -14,18 +16,25 @@ export default function Login() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault(); 
         setError(""); // Reset in case of previous error
-        const result = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
-        });
+        const result = await HandleLogin(email, password);
         if (result?.error) {
-            setError("Invalid email or password"); 
+            setError(result.error); 
         } else {
             // Todo: redirect to authenticated page
-            window.location.href = "/signup"; 
+            window.location.href = "/contact"; 
         }
     };
+
+    const handleGoogleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError(""); // Reset in case of previous error
+        const result = await HandleLoginWithGoogle();
+        if (result?.error) {
+            setError(result.error);
+        } else {
+        }
+    }
+
 
 
     return (
@@ -45,7 +54,7 @@ export default function Login() {
             </form>
             
 
-            <GoogleButton onClick={ () => signIn('google')} ></GoogleButton>
+            <GoogleButton onClick={handleGoogleSubmit} ></GoogleButton>
         </div>
     )
 }
