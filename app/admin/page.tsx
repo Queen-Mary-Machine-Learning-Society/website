@@ -5,7 +5,11 @@ export default function Contact() {
     const [token, setToken] = useState<any>(null); // Use `any` or a specific type
 
     useEffect(() => {
-        const storedToken = localStorage.getItem("sb-lnskwhrcpimttkpsqlhy-auth-token");
+        const projectURL = process.env.NEXT_PUBLIC_SUPABASE_PROJECT_ID;
+        const storedToken = localStorage.getItem(`sb-${projectURL}-auth-token`);
+        console.log("stored token ",storedToken);
+        console.log("project url ",projectURL);
+        
 
         if (storedToken) {
             try {
