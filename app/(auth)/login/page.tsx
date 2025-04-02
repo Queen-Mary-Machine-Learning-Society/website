@@ -39,6 +39,7 @@ export default function Login() {
 
     return (
         <div>
+            <h1 className="text-3xl font-bold text-center underline">Login Page</h1>
             <h1 className="text-3xl font-bold text-center">Login Page</h1>
             <form onSubmit = {handleSubmit}>
                 <div>
@@ -55,7 +56,6 @@ export default function Login() {
             
 
             <GoogleButton onClick={handleGoogleSubmit} ></GoogleButton>
-
         </div>
     )
 }
