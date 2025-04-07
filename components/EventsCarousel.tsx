@@ -1,17 +1,34 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Event } from "../types/Event";
+import { GetAllEvents } from "../app/repository/supabaseAnonServer";
+
 
 export default function EventsCarousel() {
+
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const data = await GetAllEvents();
+      setEvents(data);
+      setLoading(false);
+    };
+    fetchEvents();
+  }, []);
+
+  useEffect(() => {
+    console.log(events);
+  }, [events]);
+
+
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const images = [
-    "https://via.placeholder.com/600x400",
-    "https://via.placeholder.com/600x400",
-    "https://via.placeholder.com/600x400"
-  ];
 
   const moveCarousel = (direction: number) => {
-    const totalImages = images.length;
+    const totalImages = events.length;
     const newIndex = (currentIndex + direction + totalImages) % totalImages;
     setCurrentIndex(newIndex);
   };
@@ -20,9 +37,25 @@ export default function EventsCarousel() {
     <div className="relative">
       <div className="overflow-hidden w-full">
         <div className="flex transition-transform ease-in-out duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-          {images.map((src, index) => (
-            <div key={index} className="flex-shrink-0 w-full">
-              <img src={src} alt={`Event ${index + 1}`} className="w-full h-64 object-cover rounded-lg shadow-lg" />
+          {events.map((event) => (
+            <div key={event.id} className="flex-shrink-0 w-full">
+              <h1 style={{color: "white"}}>{event.title}</h1>
+              <div className="mb-6">
+                <p style={{color: "white"}}>
+                  📅 <strong>{new Date(event.time).toLocaleDateString('en-GB', {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}</strong>
+                </p>
+                <p style={{color: "white"}}>📍 {event.place}</p>
+                <p style={{color: "white"}}>🕕 {new Date(event.time).toLocaleTimeString([], {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}</p>
+              </div>
+              
             </div>
           ))}
         </div>
