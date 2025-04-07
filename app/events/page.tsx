@@ -1,7 +1,22 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { GetAllEvents } from "../repository/supabaseAnonServer";
 
 export default function EventsPage() {
+
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const data = await GetAllEvents();
+      setEvents(data);
+      setLoading(false);
+    };
+    fetchEvents();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0D0D0D] to-[#1A1A1A] text-white p-10 relative">
       

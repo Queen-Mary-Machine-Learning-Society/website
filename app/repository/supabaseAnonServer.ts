@@ -79,4 +79,16 @@ export const HandleLogin = async (email: string, password: string) => {
     return { error: null };
   };
   
+export const GetAllEvents = async () => {
+    const { data, error } = await supabaseAnon
+      .from('events')
+      .select('*');
+  
+    if (error) {
+      console.error('Error fetching events:', error.message);
+      return [];
+    }
+  
+    return data;
+  }
   
