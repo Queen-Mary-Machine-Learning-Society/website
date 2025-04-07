@@ -21,7 +21,7 @@ export default function Login() {
             setError(result.error); 
         } else {
             // Todo: redirect to authenticated page
-            window.location.href = "/contact"; 
+            window.location.href = "/admin"; 
         }
     };
 

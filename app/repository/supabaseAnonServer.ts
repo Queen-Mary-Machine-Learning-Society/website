@@ -82,7 +82,8 @@ export const HandleLogin = async (email: string, password: string) => {
 export const GetAllEvents = async () => {
     const { data, error } = await supabaseAnon
       .from('events')
-      .select('*');
+      .select('*')
+      .order('time', { ascending: false });
   
     if (error) {
       console.error('Error fetching events:', error.message);
