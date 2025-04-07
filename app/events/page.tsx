@@ -81,6 +81,7 @@ export default function EventsPage() {
                   minute: '2-digit',
                 })}</p>
                 <p className="text-sm mt-4">{event.content}</p>
+                <img src={event.image_url} alt={event.title} className="mt-4 rounded-lg" />
               </div>
             </div>
           ))}

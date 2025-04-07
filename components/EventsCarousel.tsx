@@ -36,7 +36,7 @@ export default function EventsCarousel() {
   return (
     <div className="relative">
       <div className="overflow-hidden w-full">
-        <div className="flex transition-transform ease-in-out duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+        <div className="flex transition-transform ease-in-out duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)`}}>
           {events.map((event) => (
             <div key={event.id} className="flex-shrink-0 w-full">
               <h1 style={{color: "white"}}>{event.title}</h1>
@@ -54,6 +54,9 @@ export default function EventsCarousel() {
                   hour: '2-digit',
                   minute: '2-digit',
                 })}</p>
+                <div style={{justifyContent: "center", alignItems: "center", display: "flex", flexDirection: "column"}}>
+                <img src={event.image_url} alt={event.title} className="mt-4 rounded-lg"  style={{height: "50%", width: "30%"}} />
+                </div>
               </div>
               
             </div>

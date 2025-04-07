@@ -5,5 +5,6 @@ export interface Event {
     time: string; // timestamp
     place: string;
     content: string;
+    image_url: string;
   }
   
