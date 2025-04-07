@@ -1,12 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { Event } from "../../types/Event";
 import { GetAllEvents } from "../repository/supabaseAnonServer";
 
 export default function EventsPage() {
 
-  const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -16,6 +17,10 @@ export default function EventsPage() {
     };
     fetchEvents();
   }, []);
+
+  useEffect(() => {
+    console.log(events);
+  }, [events]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0D0D0D] to-[#1A1A1A] text-white p-10 relative">
@@ -40,16 +45,56 @@ export default function EventsPage() {
           QMML fosters a vibrant community through events that promote learning, networking, and knowledge exchange in Machine Learning.
         </p>
 
-        {/* Event: Kaggle Seasons Workshop 10 */}
-        <div className="max-w-3xl bg-neutral-800 p-6 rounded-lg shadow-lg mb-8">
-          <h2 className="text-2xl font-semibold text-yellow-400 mb-4">Kaggle Seasons Workshop 10</h2>
-          <div className="mb-6">
-            <p>📅 <strong>Thursday, 6th March 2025</strong></p>
-            <p>📍 David Sizer LT, Bancroft Building</p>
-            <p>🕕 6-8 PM</p>
-            <p className="text-sm mt-4">In this workshop, we will explore Python packages, Kaggle's data package features, strategies for winning data competitions, and the first Kaggle industry competition. Speakers: Karl Johannes & Maxim Khovansky.</p>
-          </div>
+
+        <div>
+
+
+
+          {loading ? (
+            <div className="max-w-3xl bg-neutral-800 p-6 rounded-lg shadow-lg mb-8">
+              <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
+                Loading...
+              </h2>
+            </div>
+          ) : null}
+
+          {events.map((event) => (
+              <div
+              key={event.id}
+              className="max-w-3xl bg-neutral-800 p-6 rounded-lg shadow-lg mb-8"
+            >
+              <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
+                {event.title}
+              </h2>
+              <div className="mb-6">
+                <p>
+                  📅 <strong>{new Date(event.time).toLocaleDateString('en-GB', {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}</strong>
+                </p>
+                <p>📍 {event.place}</p>
+                <p>🕕 {new Date(event.time).toLocaleTimeString([], {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}</p>
+                <p className="text-sm mt-4">{event.content}</p>
+              </div>
+            </div>
+          ))}
+
+
+
         </div>
+
+
+
+
+
+
+
 
         {/* Call-to-Action Button */}
         <div className="flex justify-center mt-8">
