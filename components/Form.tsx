@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { supabase } from "../lib/supabase";
+import { supabaseAnon } from "../app/repository/supabaseAnonServer";
+
 
 function Form() {
   const [form, setForm] = useState({
@@ -48,13 +49,13 @@ function Form() {
         const fileName = `${Date.now()}.${fileExt}`;
         const filePath = `${fileName}`;
 
-        const { error: uploadError } = await supabase.storage
+        const { error: uploadError } = await supabaseAnon.storage
           .from("events-images")
           .upload(filePath, form.imageFile);
 
         if (uploadError) throw new Error(uploadError.message);
 
-        const { data: publicUrlData } = supabase.storage
+        const { data: publicUrlData } = supabaseAnon.storage
           .from("events-images")
           .getPublicUrl(filePath);
 
@@ -73,20 +74,20 @@ function Form() {
         const fileName = `${Date.now()}.${fileExt}`;
         const filePath = `${fileName}`;
 
-        const { error: uploadError } = await supabase.storage
+        const { error: uploadError } = await supabaseAnon.storage
           .from("events-images")
           .upload(filePath, blob);
 
         if (uploadError) throw new Error(uploadError.message);
 
-        const { data: publicUrlData } = supabase.storage
+        const { data: publicUrlData } = supabaseAnon.storage
           .from("events-images")
           .getPublicUrl(filePath);
 
         imageUrl = publicUrlData?.publicUrl;
       }
 
-      const { error } = await supabase.from("events").insert([
+      const { error } = await supabaseAnon.from("events").insert([
         {
           title: form.title,
           event_type: form.eventType,
