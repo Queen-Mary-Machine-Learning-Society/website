@@ -34,12 +34,12 @@ export async function middleware(request: NextRequest) {
     console.error("Error getting user role:", error);
     return NextResponse.error();
   }
-  //console.log("Data:", data);
+  console.log("Data:", data);
 
-  if(data[0].role !== "admin") {
-    console.warn("User is not an admin. Redirecting...");
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
+  // if(data[0].role !== "admin") {
+  //   console.warn("User is not an admin. Redirecting...");
+  //   return NextResponse.redirect(new URL("/login", request.url));
+  // }
 }
 
 
