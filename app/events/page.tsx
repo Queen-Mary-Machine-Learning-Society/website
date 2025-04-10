@@ -3,9 +3,10 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Event } from "../../types/Event";
 import { GetAllEvents } from "../repository/supabaseAnonServer";
+import { FaArrowRight, FaCalendar, FaClock, FaMapPin } from "react-icons/fa";
+import CTABanner from "@/components/CTBanner";
 
 export default function EventsPage() {
-
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -17,95 +18,99 @@ export default function EventsPage() {
     };
     fetchEvents();
   }, []);
-
-  useEffect(() => {
-    console.log(events);
-  }, [events]);
-
+  
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0D0D0D] to-[#1A1A1A] text-white p-10 relative">
-      
-      {/* Back Button (Top Left) */}
-      <Link href="/what-we-do">
-        <button className="absolute top-6 left-6 bg-white text-center w-48 rounded-2xl h-14 relative text-black text-xl font-semibold group">
-          <div className="bg-green-400 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[184px] z-10 duration-500">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="25px" width="25px">
-              <path d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z" fill="#000000"></path>
-              <path d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z" fill="#000000"></path>
-            </svg>
-          </div>
-          <p className="translate-x-2">Go Back</p>
+    <div className="min-h-screen bg-black/30 text-white relative overflow-hidden">
+
+      {/* Enhanced Back Button */}
+      <Link href="/what-we-do" className="fixed top-6 mt-24 left-6 z-50">
+        <button className="flex items-center gap-2 px-6 py-3 bg-gray-900/50 backdrop-blur-sm rounded-full hover:bg-[#FCA311]/20 transition-all duration-300 group">
+          <svg
+            className="w-6 h-6 text-[#FCA311] group-hover:-translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span className="text-gray-300 group-hover:text-[#FCA311] transition-colors">Back</span>
         </button>
       </Link>
-
-      {/* Page Content */}
-      <div className="flex flex-col items-center mt-16">
-        <h1 className="text-4xl font-bold mb-6">AI/ML Events at QMML</h1>
-        <p className="text-lg mb-8">
-          QMML fosters a vibrant community through events that promote learning, networking, and knowledge exchange in Machine Learning.
-        </p>
-
-
-        <div>
-
-
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto px-4 mt-32 py-20">
+        <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FCA311] to-[#FF6B00] mb-16 text-center">
+          AI/ML Events Timeline
+        </h1>
+        
+        {/* Timeline Container */}
+        <div className="relative pl-8 md:pl-16">
+          {/* Vertical Timeline Line */}
+          <div className="absolute left-0 md:left-8 top-0 w-1 h-full bg-gradient-to-b from-[#FCA311] to-[#FF6B00] rounded-full" />
 
           {loading ? (
-            <div className="max-w-3xl bg-neutral-800 p-6 rounded-lg shadow-lg mb-8">
-              <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
-                Loading...
-              </h2>
-            </div>
-          ) : null}
-
-          {events.map((event) => (
-              <div
-              key={event.id}
-              className="max-w-3xl bg-neutral-800 p-6 rounded-lg shadow-lg mb-8"
-            >
-              <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
-                {event.title}
-              </h2>
-              <div className="mb-6">
-                <p>
-                  📅 <strong>{new Date(event.time).toLocaleDateString('en-GB', {
-                    weekday: 'long',
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric',
-                  })}</strong>
-                </p>
-                <p>📍 {event.place}</p>
-                <p>🕕 {new Date(event.time).toLocaleTimeString([], {
-                  hour: '2-digit',
-                  minute: '2-digit',
-                })}</p>
-                <p className="text-sm mt-4">{event.content}</p>
-                <img src={event.image_url} alt={event.title} className="mt-4 rounded-lg" />
+            // Loading Skeleton
+            [1, 2, 3, 4].map((i) => (
+              <div key={i} className="relative mb-12 ml-8">
+                <div className="absolute -left-11 md:-left-14 top-6 w-8 h-8 bg-gray-900 border-4 border-[#FCA311] rounded-full animate-pulse" />
+                <div className="h-48 bg-gray-900/50 rounded-2xl animate-pulse" />
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            events.map((event, index) => (
+              <div key={event.id} className="relative mb-12 ml-8 group">
+                {/* Timeline Circle */}
+                <div className="absolute -left-11 md:-left-14 top-6 w-8 h-8 bg-gray-900 border-4 border-[#FCA311] rounded-full z-10 transition-all duration-300 group-hover:scale-125 group-hover:bg-[#FCA311]" />
 
+                {/* Event Card */}
+                <div className="relative bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-[#FCA311]/30 p-8 transition-all duration-300 overflow-hidden">
+                  {/* Event Date */}
+                  <div className="absolute top-6 right-3  text-[#FCA311] font-bold text-sm bg-gray-900/80 px-4 py-2 rounded-r-full">
+                    {new Date(event.time).toLocaleDateString('en-GB', {
+                      day: 'numeric',
+                      month: 'short',
+                    })}
+                  </div>
 
+                  {/* Event Content */}
+                  <div className="flex flex-col md:flex-row gap-8">
+                    <img
+                      src={event.image_url}
+                      alt={event.title}
+                      className="w-full md:w-64 h-48 object-cover rounded-xl"
+                    />
 
-        </div>
+                    <div className="flex-1">
+                      <h2 className="text-2xl font-bold text-[#FCA311] mb-4">{event.title}</h2>
 
+                      <div className="flex flex-col gap-2 text-gray-300 mb-4">
+                        <div className="flex items-center gap-2">
+                          <FaClock className="w-5 h-5 text-[#FCA311]" />
+                          {new Date(event.time).toLocaleTimeString([], {
+                            hour: '2-digit', minute: '2-digit'
+                          })}
+                        </div>
 
+                        <div className="flex items-center gap-2">
+                          <FaMapPin className="w-5 h-5 text-[#FCA311]" />
+                          {event.place}
+                        </div>
+                      </div>
 
+                      <p className="text-gray-300 mb-6">{event.content}</p>
 
-
-
-
-
-        {/* Call-to-Action Button */}
-        <div className="flex justify-center mt-8">
-          <Link href="/register">
-            <button className="bg-green-400 text-black px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-500 transition duration-300">
-              Join Us Now!
-            </button>
-          </Link>
+                      <button className="flex items-center gap-2 px-6 py-3 bg-[#FCA311]/10 hover:bg-[#FCA311]/20 text-[#FCA311] rounded-full transition-all duration-300">
+                        <span>View Details</span>
+                        <FaArrowRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
+      <CTABanner />
     </div>
   );
 }

@@ -92,4 +92,3 @@ export const GetAllEvents = async () => {
   
     return data;
   }
-  

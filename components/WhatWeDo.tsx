@@ -10,39 +10,78 @@ const cards = [
 
 export default function WhatWeDo() {
   return (
-    <section className="py-16 px-8 bg-gradient-to-b from-[#0A0A0A] to-[#141414] text-white text-center">
-      <h2 className="text-4xl font-bold mb-10">What We Do</h2>
-      <div className="flex flex-wrap justify-center gap-10">
-        {cards.map((card, index) => {
-          const CardContent = (
-            <div className="cursor-pointer group overflow-hidden p-5 duration-1000 hover:duration-1000 relative w-64 h-64 bg-neutral-950 rounded-xl">
-              {/* Background Effects */}
-              <div className="group-hover:-rotate-45 bg-transparent group-hover:scale-150 -top-12 -left-12 absolute shadow-yellow-600 shadow-xl rounded-xl transition-all ease-in-out group-hover:duration-1000 duration-1000 w-24 h-24 opacity-90"></div>
-              <div className="group-hover:rotate-45 bg-transparent group-hover:scale-150 top-44 left-14 absolute shadow-red-600 shadow-xl rounded-xl transition-all ease-in-out group-hover:duration-1000 duration-1000 w-24 h-24 opacity-90"></div>
-              <div className="group-hover:-rotate-45 bg-transparent group-hover:scale-150 top-24 left-56 absolute shadow-sky-600 shadow-xl rounded-xl transition-all ease-in-out group-hover:duration-1000 duration-1000 w-24 h-24 opacity-90"></div>
-              <div className="group-hover:-rotate-45 bg-transparent group-hover:scale-150 top-12 left-12 absolute shadow-red-600 shadow-xl rounded-xl transition-all ease-in-out group-hover:duration-1000 duration-1000 w-12 h-12 opacity-90"></div>
-              <div className="group-hover:rotate-45 bg-transparent group-hover:scale-150 top-12 left-12 absolute shadow-green-600 shadow-xl rounded-xl transition-all ease-in-out group-hover:duration-1000 duration-1000 w-44 h-44 opacity-90"></div>
-              <div className="group-hover:rotate-45 bg-transparent group-hover:scale-150 -top-24 -left-12 absolute shadow-sky-600 shadow-xl rounded-xl transition-all ease-in-out group-hover:duration-1000 duration-1000 w-64 h-64 opacity-90"></div>
-              <div className="group-hover:-rotate-45 bg-transparent group-hover:scale-150 top-24 left-12 absolute shadow-sky-400 shadow-xl rounded-xl transition-all ease-in-out group-hover:duration-1000 duration-1000 w-4 h-4 opacity-90"></div>
+    <section className="relative w-full mt-32 py-20 px-4 sm:px-8  text-center overflow-hidden">
+     
+      <h2 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FCA311] to-[#FF6B00] mb-16">
+        What We Do
+      </h2>
 
-                            {/* Card Content */}
-                            <div className="w-full h-full shadow-2xl shadow-neutral-950 p-3 bg-neutral-800 opacity-90 rounded-xl flex-col gap-2 flex justify-center text-center">
-                <span className="text-neutral-50 font-bold text-xl italic">{card.title}</span>
-                <p className="text-neutral-300 text-sm">{card.description}</p>
+      <div className="flex flex-wrap justify-center gap-8 lg:gap-12 max-w-7xl mx-auto">
+        {cards.map((card, index) => (
+          <Link
+            key={index}
+            href={card.link}
+            className="group relative w-72 h-72 perspective-1000 hover:scale-105 transition-transform duration-500"
+          >
+            {/* Card container */}
+            <div className="relative w-full h-full preserve-3d">
+              {/* Gradient background */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2a] shadow-2xl shadow-black/50"></div>
+
+              {/* Floating particles */}
+              <div className="absolute inset-0 overflow-hidden rounded-2xl">
+                {[...Array(6)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-2 h-2 bg-[#FCA311] rounded-full"
+                    style={{
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                      animation: `float ${5 + i * 2}s infinite`
+                    }}
+                  ></div>
+                ))}
+              </div>
+
+              {/* Hover effect layer */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#FCA311] to-[#FF6B00] opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+
+              {/* Card content */}
+              <div className="relative w-full h-full p-8 flex flex-col justify-center items-center gap-4 text-center backdrop-blur-sm">
+                <div className="text-4xl mb-4">
+                  <div className="inline-block bg-gradient-to-r from-[#FCA311] to-[#FF6B00] text-transparent bg-clip-text">
+                    {index === 0 && "📚"}
+                    {index === 1 && "🏆"}
+                    {index === 2 && "🎤"}
+                  </div>
+                </div>
+                <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FCA311] to-[#FF6B00]">
+                  {card.title}
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  {card.description}
+                </p>
+                <div className="mt-4 flex items-center gap-2 text-[#FCA311] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-sm font-semibold">Learn More</span>
+                  <svg
+                    className="w-4 h-4 animate-bounce-horizontal"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    ></path>
+                  </svg>
+                </div>
               </div>
             </div>
-          );
-
-          return card.link ? (
-            <Link key={index} href={card.link}>
-              {CardContent}
-            </Link>
-          ) : (
-            <div key={index}>{CardContent}</div>
-          );
-        })}
+          </Link>
+        ))}
       </div>
     </section>
   );
 }
-

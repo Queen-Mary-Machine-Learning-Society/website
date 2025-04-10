@@ -6,5 +6,4 @@ export interface Event {
     place: string;
     content: string;
     image_url: string;
-  }
-  
+}
