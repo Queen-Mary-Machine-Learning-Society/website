@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.49.1",
+    "@supabase/supabase-js": "^2.49.4",
     "jwt-decode": "^4.0.0",
     "next": "^15.2.4",
     "next-auth": "^4.24.11",
