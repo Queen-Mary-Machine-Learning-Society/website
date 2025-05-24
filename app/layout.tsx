@@ -6,6 +6,8 @@ export const metadata = {
   description: 'Queen Mary Machine Learning Society',
 }
 
+
+
 export default function RootLayout({
   children,
 }: {
@@ -13,6 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="apple-mobile-web-app-title" content="QMML" />
+
+
+      </head>
       <body className="flex flex-col min-h-screen relative">
         {/* Background Image */}
         <div
