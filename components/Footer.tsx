@@ -86,6 +86,9 @@ export default function Footer() {
                 qmmml@qmsu.org
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-px bg-[#FCA311]"></span>
               </a>
+              <a className="text-gray-700 " href="/login">
+                Admin Portal
+              </a>
             </li>
           </ul>
         </div>

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Form from "../../components/Form"
 
 export default function Admin() {
 
@@ -40,7 +41,7 @@ export default function Admin() {
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
 
             <h1>Admin Page</h1>
-            <a href="/forms" className="text-blue-500 hover:underline">Forms</a>
+            <Form />
 
         </div>
     );
