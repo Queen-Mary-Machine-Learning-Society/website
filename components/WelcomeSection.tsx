@@ -73,7 +73,7 @@ export default function WelcomeSection() {
               <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FCA311] to-[#FF6B00]">
                 Ready to Join the Society?
               </h3>
-              <Link href="https://www.qmsu.org/groups/qmml/">
+              <Link target="_blank" href="https://www.qmsu.org/groups/qmml/">
                 <button className="flex items-center space-x-2 px-8 py-3 bg-gradient-to-r from-[#FCA311] to-[#FF6B00] text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-300">
                   <span>Join Society Now</span>
                   <svg

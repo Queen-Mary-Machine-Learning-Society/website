@@ -18,7 +18,7 @@ export default function EventsPage() {
     };
     fetchEvents();
   }, []);
-
+  
   return (
     <div className="min-h-screen bg-black/30 text-white relative overflow-hidden">
 
@@ -41,7 +41,7 @@ export default function EventsPage() {
         <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FCA311] to-[#FF6B00] mb-16 text-center">
           AI/ML Events Timeline
         </h1>
-
+        
         {/* Timeline Container */}
         <div className="relative pl-8 md:pl-16">
           {/* Vertical Timeline Line */}

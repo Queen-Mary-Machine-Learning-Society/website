@@ -25,7 +25,7 @@ export default function CTABanner() {
 
                     {/* Button Content */}
                     <div className="relative z-10 flex items-center justify-center gap-3">
-                        <Link className='flex items-center gap-3 ' href="https://www.qmsu.org/groups/qmml/">
+                        <Link className='flex items-center gap-3 ' target="_blank" href="https://www.qmsu.org/groups/qmml/">
                             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FCA311] to-[#FF6B00] group-hover:from-white group-hover:to-gray-200 transition-colors duration-300">
                                 Join Society Now
                             </span>
