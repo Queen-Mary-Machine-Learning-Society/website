@@ -225,7 +225,7 @@ function Form() {
                   <input
                     type="radio"
                     name="imageOption"
-                    value="upload"
+                    value={"upload" || ""}
                     checked={imageOption === "upload"}
                     onChange={() => setImageOption("upload")}
                   />
@@ -235,7 +235,7 @@ function Form() {
                   <input
                     type="radio"
                     name="imageOption"
-                    value="url"
+                    value={"url" || ""}
                     checked={imageOption === "url"}
                     onChange={() => setImageOption("url")}
                   />
