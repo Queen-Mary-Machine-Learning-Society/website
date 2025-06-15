@@ -19,7 +19,7 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center flex-col space-x-2">
-          <Image src="/images/logo.png" alt="QMML Logo" width={100} height={100} className="h-14 w-auto" />
+          <Image src="/images/logo.png" alt="QMML Logo" width={100} height={100} priority className="h-14 w-auto" />
           <span className="text-lg font-bold">QMML</span>
         </Link>
 

@@ -1,36 +1,18 @@
-"use client";
-import { useEffect, useState } from "react";
 import Form from "../../components/Form"
+import { createClient } from '@/app/utils/supabase/server'
+import { redirect } from 'next/navigation'
 
-export default function Admin() {
-    const [token, setToken] = useState<any>(null);
-    const projectURL = process.env.NEXT_PUBLIC_SUPABASE_PROJECT_ID;
-    const storedToken = localStorage.getItem(`sb-${projectURL}-auth-token`);
+export default async function Admin() {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
 
-    useEffect(() => {
-        if (storedToken) {
-            try {
-                const parsedToken = JSON.parse(storedToken);
-                //console.log(parsedToken);
-
-                const userRole = parsedToken.user.user_metadata.role;
-                //console.log("User Role:", userRole);
-
-                if (userRole !== "ADMIN") {
-                    console.warn("User is not an admin. Redirecting...");
-                    window.location.href = "/login";
-                }
-            } catch (error) {
-                console.error("Error parsing JSON from localStorage:", error);
-            }
-        }
-    }, [token]);
-
-    if (!storedToken) {
-        console.warn("No token found. Redirecting...");
-        window.location.href = "/login";
+    if (!user) {
+        redirect('/login')
     }
 
+    if (user.user_metadata.role !== 'ADMIN') {
+        redirect('/login')
+    }
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">

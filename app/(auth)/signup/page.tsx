@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { HandleSignUp } from "../../repository/supabaseAnonServer";
+import { useRouter } from "next/navigation";
+import { HandleSignUp } from "./action";
 
 export default function SignUp() {
 
@@ -11,31 +12,35 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false)
+    const router = useRouter()
 
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
+        e.preventDefault()
         if (password !== confirmPassword) {
-            setError("Passwords do not match");
-            return;
+            setError('Passwords do not match')
+            return
         }
 
-        setError(""); // Reset in case of previous error
+        setError('')
+        setLoading(true)
 
-        // Insert user into database
-        const result = await HandleSignUp(email, password, firstName, lastName);
-        if (result?.error) {
-            setError("Error creating user");
+        const result = await HandleSignUp({
+            email,
+            password,
+            firstName,
+            lastName,
+        })
+
+        setLoading(false)
+
+        if (result.error) {
+            console.log("Error: ", result.error)
+        } else {
+            alert('Registered! Please verify your email before logging in.')
+            router.push('/login')
         }
-        else {
-            alert(
-                "You have registered. Verify your email to complete the process."
-            );
-            window.location.href = "/login";
-        }
-
-
     }
 
     return (
@@ -118,9 +123,11 @@ export default function SignUp() {
                     <button
                         type="submit"
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        disabled={loading}
                     >
                         Sign Up
                     </button>
+                    {error && <p className="text-red-500">{error}</p>}
                 </form>
             </div>
         </div>
