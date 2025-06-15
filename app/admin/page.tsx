@@ -10,7 +10,7 @@ export default async function Admin() {
         redirect('/login')
     }
 
-    if (user.user_metadata.role !== 'ADMIN') {
+    if (user.user_metadata.role !== 'admin') {
         redirect('/login')
     }
 
