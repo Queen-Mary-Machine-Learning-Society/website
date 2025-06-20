@@ -10,7 +10,7 @@ interface SignUpInput {
 }
 
 interface SignUpResult {
-  data?: any
+  data?: unknown
   error?: string
 }
 

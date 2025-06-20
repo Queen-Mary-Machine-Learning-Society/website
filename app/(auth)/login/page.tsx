@@ -41,7 +41,11 @@ export default function Login() {
         setLoading(true)
         const res = await HandleLoginWithGoogle()
         setLoading(false)
-        res.error ? setError(res.error) : res.url && (window.location.href = res.url)
+        if (res.error) {
+            setError(res.error)
+        } else if (res.url) {
+            window.location.href = res.url
+        }
     }
 
 

@@ -16,11 +16,6 @@ export const supabaseAnon = createClient(supabaseUrl, supabaseAnonKey);
 * 
 */
 
-type SignUpResult = {
-    user?: object | null;
-    error?: string | null;
-  };
-
 export const HandleSignUp = async (email: string, password: string, firstname: string, lastname: string) => {
 
     //Sign up the user using the supabaseAnon client

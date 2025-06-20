@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FaInstagram, FaTwitter, FaMapMarker, FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaInstagram, FaMapMarker, FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
 
 
 export default function ContactPage() {

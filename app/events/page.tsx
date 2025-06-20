@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Event } from "../../types/Event";
 import { GetAllEvents } from "../repository/supabaseAnonServer";
-import { FaArrowRight, FaCalendar, FaClock, FaMapPin } from "react-icons/fa";
+import { FaArrowRight, FaClock, FaMapPin } from "react-icons/fa";
 import CTABanner from "@/components/CTBanner";
 
 export default function EventsPage() {
@@ -56,7 +56,7 @@ export default function EventsPage() {
               </div>
             ))
           ) : (
-            events.map((event, index) => (
+            events.map((event, _index) => (
               <div key={event.id} className="relative mb-12 ml-8 group">
                 {/* Timeline Circle */}
                 <div className="absolute -left-11 md:-left-14 top-6 w-8 h-8 bg-gray-900 border-4 border-[#FCA311] rounded-full z-10 transition-all duration-300 group-hover:scale-125 group-hover:bg-[#FCA311]" />

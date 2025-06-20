@@ -2,7 +2,7 @@
 
 import { createClient as createServerClient } from '@/app/utils/supabase/server'
 
-interface AuthResult { data?: any; error?: string }
+interface AuthResult { data?: unknown; error?: string }
 
 export async function HandleLogin({ email, password }: { email: string; password: string }): Promise<AuthResult> {
   const supabase = await createServerClient()

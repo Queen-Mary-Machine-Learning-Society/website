@@ -1,16 +1,16 @@
 'use client'; // Mark this component as a client component
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter, usePathname } from 'next/navigation'; // Import from next/navigation
+import { usePathname } from 'next/navigation'; // Import from next/navigation
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname(); // Use usePathname instead of useRouter().pathname
 
-  const handleLinkClick = (href: string) => {
+  const handleLinkClick = () => {
     setMenuOpen(false); // Close mobile menu on link click
   };
 
@@ -30,7 +30,7 @@ export default function Navbar() {
               href="/"
               className={`relative overflow-hidden group ${pathname === '/' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'
                 } transition-colors duration-300`}
-              onClick={() => handleLinkClick('/')}
+              onClick={() => handleLinkClick()}
             >
               Home
               <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
@@ -41,7 +41,7 @@ export default function Navbar() {
               href="/what-we-do"
               className={`relative overflow-hidden group ${pathname === '/what-we-do' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'
                 } transition-colors duration-300`}
-              onClick={() => handleLinkClick('/what-we-do')}
+              onClick={() => handleLinkClick()}
             >
               What We Do
               <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
@@ -52,7 +52,7 @@ export default function Navbar() {
               href="/our-team"
               className={`relative overflow-hidden group ${pathname === '/our-team' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'
                 } transition-colors duration-300`}
-              onClick={() => handleLinkClick('/our-team')}
+              onClick={() => handleLinkClick()}
             >
               Our Team
               <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
@@ -63,7 +63,7 @@ export default function Navbar() {
               href="/gallery"
               className={`relative overflow-hidden group ${pathname === '/gallery' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'
                 } transition-colors duration-300`}
-              onClick={() => handleLinkClick('/gallery')}
+              onClick={() => handleLinkClick()}
             >
               Gallery
               <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
@@ -74,7 +74,7 @@ export default function Navbar() {
               href="/contact"
               className={`relative overflow-hidden group ${pathname === '/contact' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'
                 } transition-colors duration-300`}
-              onClick={() => handleLinkClick('/contact')}
+              onClick={() => handleLinkClick()}
             >
               Get in Touch
               <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
@@ -102,7 +102,7 @@ export default function Navbar() {
           <li>
             <Link
               href="/"
-              onClick={() => handleLinkClick('/')}
+              onClick={() => handleLinkClick()}
               className={`${pathname === '/' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'} transition-colors duration-300`}
             >
               Home
@@ -111,7 +111,7 @@ export default function Navbar() {
           <li>
             <Link
               href="/what-we-do"
-              onClick={() => handleLinkClick('/what-we-do')}
+              onClick={() => handleLinkClick()}
               className={`${pathname === '/what-we-do' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'} transition-colors duration-300`}
             >
               What We Do
@@ -120,7 +120,7 @@ export default function Navbar() {
           <li>
             <Link
               href="/our-team"
-              onClick={() => handleLinkClick('/our-team')}
+              onClick={() => handleLinkClick()}
               className={`${pathname === '/our-team' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'} transition-colors duration-300`}
             >
               Our Team
@@ -129,7 +129,7 @@ export default function Navbar() {
           <li>
             <Link
               href="/gallery"
-              onClick={() => handleLinkClick('/gallery')}
+              onClick={() => handleLinkClick()}
               className={`${pathname === '/gallery' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'} transition-colors duration-300`}
             >
               Gallery
@@ -138,7 +138,7 @@ export default function Navbar() {
           <li>
             <Link
               href="/contact"
-              onClick={() => handleLinkClick('/contact')}
+              onClick={() => handleLinkClick()}
               className={`${pathname === '/contact' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'} transition-colors duration-300`}
             >
               Get in Touch
