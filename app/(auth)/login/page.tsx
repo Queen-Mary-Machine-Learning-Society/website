@@ -6,12 +6,6 @@ import { useRouter } from 'next/navigation';
 import { HandleLogin, HandleLoginWithGoogle } from './action';
 
 
-interface AuthResult {
-    data?: any; // Replace 'any' with the actual success data type
-    error?: { message: string } | string | null;
-}
-
-
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
