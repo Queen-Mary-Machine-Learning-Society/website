@@ -5,7 +5,16 @@ import { supabaseAnon } from "../app/repository/supabaseAnonServer";
 
 
 function Form() {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<{
+    title: string;
+    eventType: string;
+    time: string;
+    place: string;
+    content: string;
+    leader: string;
+    imageFile: File | null;
+    imageUrlInput: string;
+  }>({
     title: "",
     eventType: "",
     time: "",
@@ -19,17 +28,24 @@ function Form() {
   const [isClient, setIsClient] = useState(false);
   const [loading, setLoading] = useState(false);
   const [imageOption, setImageOption] = useState("upload");
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
 
     if (name === "image") {
-      setForm({ ...form, imageFile: files[0], imageUrlInput: "" });
+      // Type narrowing to safely access 'files'
+      const input = e.target as HTMLInputElement;
+      if (input.files && input.files.length > 0) {
+        setForm({ ...form, imageFile: input.files[0], imageUrlInput: "" });
+      }
     } else if (name === "imageUrlInput") {
       setForm({ ...form, imageUrlInput: value, imageFile: null });
     } else {
@@ -37,7 +53,7 @@ function Form() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
@@ -117,8 +133,13 @@ function Form() {
       if (fileInputRef.current) fileInputRef.current.value = "";
 
     } catch (err) {
-      console.error("Submission failed:", err.message);
-      alert("Failed to submit event: " + err.message);
+      if (err instanceof Error) {
+        console.error("Submission failed:", err.message);
+        alert("Failed to submit event: " + err.message);
+      } else {
+        console.error("Unknown error:", err);
+        alert("An unknown error occurred");
+      }
     }
 
     setLoading(false);
