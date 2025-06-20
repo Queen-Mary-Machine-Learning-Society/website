@@ -15,7 +15,7 @@ export async function updateSession(request: NextRequest) {
           return request.cookies.getAll()
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
+          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
           supabaseResponse = NextResponse.next({
             request,
           })
@@ -37,20 +37,18 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  if (
-    !user &&
-    !request.nextUrl.pathname.startsWith('/login') &&
-    !request.nextUrl.pathname.startsWith('/signup') &&
-    !request.nextUrl.pathname.startsWith('/auth')
-  ) {
-    // no user, potentially respond by redirecting the user to the login page
-    const url = request.nextUrl
+  const protectedRoutes = ['/dashboard', '/account', '/submit', '/profile'];
 
-    // If already on /login, don't redirect again
+  const isProtected = protectedRoutes.some((route) =>
+    request.nextUrl.pathname.startsWith(route)
+  );
+
+  if (!user && isProtected) {
+    const url = request.nextUrl;
     if (url.pathname !== '/login') {
-      const redirectUrl = url.clone()
-      redirectUrl.pathname = '/login'
-      return NextResponse.redirect(redirectUrl)
+      const redirectUrl = url.clone();
+      redirectUrl.pathname = '/login';
+      return NextResponse.redirect(redirectUrl);
     }
   }
 

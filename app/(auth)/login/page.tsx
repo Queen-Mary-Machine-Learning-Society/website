@@ -4,12 +4,7 @@ import GoogleButton from 'react-google-button';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { HandleLogin, HandleLoginWithGoogle } from './action';
-
-
-interface AuthResult {
-    data?: any; // Replace 'any' with the actual success data type
-    error?: { message: string } | string | null;
-}
+import { AuthResponse } from '@supabase/supabase-js';
 
 
 export default function Login() {
@@ -22,10 +17,10 @@ export default function Login() {
     const onLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true)
-        const res = await HandleLogin({ email, password })
+        const res : AuthResponse = await HandleLogin({ email, password })
         setLoading(false)
         if (res.error) {
-            setError(res.error);
+            setError(res.error.message);
         } else {
             const role = res.data?.user?.user_metadata?.role;
             console.log("Role: ", role)
@@ -41,7 +36,11 @@ export default function Login() {
         setLoading(true)
         const res = await HandleLoginWithGoogle()
         setLoading(false)
-        res.error ? setError(res.error) : res.url && (window.location.href = res.url)
+        if (res.error) {
+            setError(res.error.message)
+        } else if (res.data.url) {
+            window.location.href = res.data.url
+        }
     }
 
 

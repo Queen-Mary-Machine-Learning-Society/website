@@ -1,6 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_PROJECT_URL!;
+// const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_PROJECT_URL!;
+// const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 export const supabaseAnon = createClient(supabaseUrl, supabaseAnonKey);
@@ -11,11 +15,6 @@ export const supabaseAnon = createClient(supabaseUrl, supabaseAnonKey);
 *   Users (Custom table for additional user data, contains firstName, lastName)
 * 
 */
-
-type SignUpResult = {
-    user?: object | null;
-    error?: string | null;
-  };
 
 export const HandleSignUp = async (email: string, password: string, firstname: string, lastname: string) => {
 
