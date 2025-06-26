@@ -1,6 +1,7 @@
 # QMML Website
 
 ### Authors
+#### Project Manager: Muhammad Hussain
 #### Leads: Roman & Mayur
 #### Interns: Sam, Ahnaf, Jisu, Yaseen
 
