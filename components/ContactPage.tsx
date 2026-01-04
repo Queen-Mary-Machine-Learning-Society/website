@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { FaInstagram, FaMapMarker, FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
+import { siteConfig } from "@/lib/config";
 
 
 export default function ContactPage() {
@@ -25,7 +26,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-xl font-semibold">Our Location</p>
-                  <p className="text-gray-300">327 Mile End Rd, London E1 4NS</p>
+                  <p className="text-gray-300">{siteConfig.location}</p>
                 </div>
               </div>
 
@@ -35,16 +36,16 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-xl font-semibold">Email Us</p>
-                  <p className="text-gray-300">qmmml@qmsu.org</p>
+                  <p className="text-gray-300">{siteConfig.email}</p>
                 </div>
               </div>
 
               {/* Social Media */}
               <div className="flex space-x-6 pt-4">
                 {[
-                  { icon: FaInstagram, color: '#E1306C', link: 'https://www.instagram.com/qmmachinelearning/' },
-                  { icon: FaLinkedin, color: '#0A66C2', link: 'https://www.linkedin.com/company/qmml/' },
-                  { icon: FaGithub, color: 'white', link: 'https://github.com/manu-2213/QMUL_MLSociety' }
+                  { icon: FaInstagram, color: '#E1306C', link: siteConfig.social.instagram },
+                  { icon: FaLinkedin, color: '#0A66C2', link: siteConfig.social.linkedin },
+                  { icon: FaGithub, color: 'white', link: siteConfig.social.github }
                 ].map((Social, index) => (
                   <Link key={index} href={Social.link} className="p-3 rounded-full z-10 bg-white/5 hover:bg-white/10 transition-all duration-300">
                     <Social.icon className="text-2xl" style={{ color: Social.color }} />
@@ -57,21 +58,38 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div className="relative bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] p-8 rounded-3xl shadow-2xl backdrop-blur-sm">
             <h3 className="text-3xl font-bold text-[#FCA311] mb-8">Send Us a Message</h3>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={(e) => {
+              e.preventDefault();
+              const form = e.target as HTMLFormElement;
+              const name = (form.elements.namedItem('name') as HTMLInputElement).value;
+              const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+              const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
+
+              const subject = `Contact from Website: ${name}`;
+              const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+
+              window.location.href = `mailto:${siteConfig.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            }}>
               <div className="space-y-4">
                 <input
                   type="text"
+                  name="name"
                   placeholder="Name"
+                  required
                   className="w-full p-4 bg-gray-900/50 text-white rounded-xl border border-white/10 focus:border-[#FCA311]/50 focus:ring-2 focus:ring-[#FCA311]/20 transition-all outline-none"
                 />
                 <input
                   type="email"
+                  name="email"
                   placeholder="Email"
+                  required
                   className="w-full p-4 bg-gray-900/50 text-white rounded-xl border border-white/10 focus:border-[#FCA311]/50 focus:ring-2 focus:ring-[#FCA311]/20 transition-all outline-none"
                 />
                 <textarea
+                  name="message"
                   placeholder="Message"
                   rows={3}
+                  required
                   className="w-full p-4 bg-gray-900/50 text-white rounded-xl border border-white/10 focus:border-[#FCA311]/50 focus:ring-2 focus:ring-[#FCA311]/20 transition-all outline-none"
                 ></textarea>
               </div>
@@ -120,9 +138,11 @@ export default function ContactPage() {
           <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
             Join hands with QMML to shape the future of machine learning education and innovation
           </p>
-          <button className="bg-gradient-to-r from-[#FCA311] to-[#FF6B00] text-white px-12 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-[#FCA311]/20 transition-all duration-300 animate-pulse-slow">
-            Start Partnership
-          </button>
+          <a href={`mailto:${siteConfig.email}?subject=Partnership Inquiry`} className="inline-block">
+            <button className="bg-gradient-to-r from-[#FCA311] to-[#FF6B00] text-white px-12 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-[#FCA311]/20 transition-all duration-300 animate-pulse-slow">
+              Start Partnership
+            </button>
+          </a>
         </div>
       </div>
 

@@ -3,26 +3,13 @@
 import Image from "next/image";
 import Link from 'next/link';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { siteConfig } from '@/lib/config';
 
 export default function Footer() {
-  const navigationLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'What We Do', href: '/what-we-do' },
-    { label: 'Our Team', href: '/our-team' },
-    { label: 'Gallery', href: '/gallery' },
-    { label: 'Get in Touch', href: '/contact' },
-  ];
-
-  const eventsLinks = [
-    { label: 'AI/ML Education', href: '/education' },
-    { label: 'AI/ML Competitions', href: '/competitions' },
-    { label: 'AI/ML Events', href: '/events' },
-  ];
-
   const socialMediaLinks = [
-    { icon: <FaGithub className="text-xl text-[#FCA311]" />, href: 'https://github.com/manu-2213/QMUL_MLSociety' },
-    { icon: <FaLinkedin className="text-xl text-[#FCA311]" />, href: 'https://www.linkedin.com/company/qmml/' },
-    { icon: <FaInstagram className="text-xl text-[#FCA311]" />, href: 'https://www.instagram.com/qmmachinelearning/' },
+    { icon: <FaGithub className="text-xl text-[#FCA311]" />, href: siteConfig.social.github },
+    { icon: <FaLinkedin className="text-xl text-[#FCA311]" />, href: siteConfig.social.linkedin },
+    { icon: <FaInstagram className="text-xl text-[#FCA311]" />, href: siteConfig.social.instagram },
   ];
 
   return (
@@ -51,7 +38,7 @@ export default function Footer() {
         <div>
           <h4 className="text-[#FCA311] text-lg font-semibold mb-6">Explore</h4>
           <ul className="space-y-4">
-            {navigationLinks.map((link) => (
+            {siteConfig.navigation.map((link) => (
               <li key={link.label}>
                 <Link href={link.href} className="text-gray-300 hover:text-[#FCA311] transition-colors duration-300 group">
                   {link.label}
@@ -66,7 +53,7 @@ export default function Footer() {
         <div>
           <h4 className="text-[#FCA311] text-lg font-semibold mb-6">Events</h4>
           <ul className="space-y-4">
-            {eventsLinks.map((link) => (
+            {siteConfig.programs.map((link) => (
               <li key={link.label}>
                 <Link href={link.href} className="text-gray-300 hover:text-[#FCA311] transition-colors duration-300 group">
                   {link.label}

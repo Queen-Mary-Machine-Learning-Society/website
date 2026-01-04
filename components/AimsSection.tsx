@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export default function AimsSection() {
   return (
     <section className="relative py-20 text-center bg-gradient-to-d from-[#d57c00] to-[#210d25]">
@@ -14,17 +16,20 @@ export default function AimsSection() {
             {
               title: "Competitive Edge",
               description: "Sharpen your skills through national ML competitions and hackathons with expert mentorship",
-              icon: "🏆"
+              icon: "🏆",
+              link: "/competitions"
             },
             {
               title: "Collaborative Learning",
               description: "Join interdisciplinary teams to solve real-world problems using machine learning",
-              icon: "🤝"
+              icon: "🤝",
+              link: "/education"
             },
             {
               title: "Career Pathways",
               description: "Connect with industry leaders through exclusive workshops and networking events",
-              icon: "🚀"
+              icon: "🚀",
+              link: "/events"
             }
           ].map((aim, index) => (
             <div
@@ -42,9 +47,11 @@ export default function AimsSection() {
                   <div className="absolute inset-0 flex flex-col justify-center p-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <h3 className="text-lg font-bold text-white mb-2">{aim.title}</h3>
                     <p className="text-sm text-gray-300">{aim.description}</p>
-                    <button className="mt-4 text-xs font-semibold text-[#FCA311] hover:text-[#E69500] transition-colors">
-                      Explore Programs →
-                    </button>
+                    <Link href={aim.link}>
+                      <button className="mt-4 text-xs font-semibold text-[#FCA311] hover:text-[#E69500] transition-colors">
+                        Explore Programs →
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

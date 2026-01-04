@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { siteConfig } from "@/lib/config";
 import { Event } from "../../types/Event";
 import { GetAllEvents } from "../repository/supabaseAnonServer";
 import { FaArrowRight, FaClock, FaMapPin } from "react-icons/fa";
@@ -18,7 +19,7 @@ export default function EventsPage() {
     };
     fetchEvents();
   }, []);
-  
+
   return (
     <div className="min-h-screen bg-black/30 text-white relative overflow-hidden">
 
@@ -41,7 +42,7 @@ export default function EventsPage() {
         <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FCA311] to-[#FF6B00] mb-16 text-center">
           AI/ML Events Timeline
         </h1>
-        
+
         {/* Timeline Container */}
         <div className="relative pl-8 md:pl-16">
           {/* Vertical Timeline Line */}
@@ -98,10 +99,12 @@ export default function EventsPage() {
 
                       <p className="text-gray-300 mb-6">{event.content}</p>
 
-                      <button className="flex items-center gap-2 px-6 py-3 bg-[#FCA311]/10 hover:bg-[#FCA311]/20 text-[#FCA311] rounded-full transition-all duration-300">
-                        <span>View Details</span>
-                        <FaArrowRight className="w-4 h-4" />
-                      </button>
+                      <Link href={siteConfig.joinUrl} target="_blank" rel="noopener noreferrer">
+                        <button className="flex items-center gap-2 px-6 py-3 bg-[#FCA311]/10 hover:bg-[#FCA311]/20 text-[#FCA311] rounded-full transition-all duration-300">
+                          <span>View Details</span>
+                          <FaArrowRight className="w-4 h-4" />
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

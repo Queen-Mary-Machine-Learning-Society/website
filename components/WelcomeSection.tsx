@@ -1,6 +1,7 @@
 "use client";
 import Image from 'next/image'
 import Link from 'next/link';
+import { siteConfig } from '@/lib/config';
 
 export default function WelcomeSection() {
   return (
@@ -32,19 +33,16 @@ export default function WelcomeSection() {
 
         {/* Animated Buttons */}
         <div className="flex flex-wrap justify-center gap-6 mb-12">
-          {[
-            { text: 'AI/ML Education', href: '/education' }, // Define href for each button
-            { text: 'AI/ML Competitions', href: '/competitions' },
-            { text: 'AI/ML Events', href: '/events' },
-          ].map((item) => (
-            <div key={item.text} className="relative group">
+          {siteConfig.programs.map((item) => (
+            <div key={item.label} className="relative group">
               <Link href={item.href} passHref> {/* Wrap the button with Link and use passHref */}
                 <button className="relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
                   <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#FCA311] to-[#FF6B00] p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
                   <span className="relative z-10 block px-6 py-3 rounded-xl bg-gray-950">
                     <div className="flex items-center space-x-2">
+                      {/* Change item.text to item.label */}
                       <span className="transition-all duration-500 group-hover:translate-x-1">
-                        {item.text}
+                        {item.label}
                       </span>
                       <svg
                         className="w-6 h-6 transition-transform duration-500 group-hover:translate-x-1"
@@ -73,7 +71,7 @@ export default function WelcomeSection() {
               <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FCA311] to-[#FF6B00]">
                 Ready to Join the Society?
               </h3>
-              <Link target="_blank" href="https://www.qmsu.org/groups/qmml/">
+              <Link target="_blank" href={siteConfig.joinUrl}>
                 <button className="flex items-center space-x-2 px-8 py-3 bg-gradient-to-r from-[#FCA311] to-[#FF6B00] text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-300">
                   <span>Join Society Now</span>
                   <svg

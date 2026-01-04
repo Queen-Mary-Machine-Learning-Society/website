@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { siteConfig } from "@/lib/config";
 
 const joinUsLinks = [
   {
@@ -8,42 +9,42 @@ const joinUsLinks = [
     description: "Official membership with full society benefits",
     colors: "from-[#FCA311] via-[#FF6B00] to-[#FF3C00]",
     linkName: "Join Now",
-    linkHref: "https://www.qmsu.org/groups/qmml/", // Replace with the actual link
+    linkHref: siteConfig.joinUrl,
   },
   {
     title: "GitHub Repository",
     description: "Access codebases & competition solutions",
     colors: "from-[#7CFC00] via-[#00FF00] to-[#00FF7F]",
     linkName: "Explore Code",
-    linkHref: "https://github.com/manu-2213/QMUL_MLSociety", // Replace with the actual link
+    linkHref: siteConfig.social.github,
   },
   {
     title: "Professional Network",
     description: "Connect with industry leaders",
     colors: "from-[#007FFF] via-[#0055FF] to-[#0033FF]",
     linkName: "Connect",
-    linkHref: "https://www.linkedin.com/company/qmml/", // Replace with the actual link
+    linkHref: siteConfig.social.linkedin,
   },
   {
     title: "Instagram",
     description: "Event updates & community highlights",
     colors: "from-[#FF00FF] via-[#FF00AA] to-[#FF0066]",
     linkName: "Stay Updated",
-    linkHref: "https://www.instagram.com/qmmachinelearning/", // Replace with the actual link
+    linkHref: siteConfig.social.instagram,
   },
   {
     title: "WhatsApp Community",
     description: "Real-time discussions & notifications",
     colors: "from-[#00FFFF] via-[#00AAFF] to-[#0066FF]",
     linkName: "Join Chat",
-    linkHref: "YOUR_WHATSAPP_COMMUNITY_LINK", // Replace with the actual link
+    linkHref: siteConfig.social.whatsapp,
   },
   {
     title: "Workshops",
     description: "Hands-on sessions with experts",
     colors: "from-[#FFD700] via-[#FFAA00] to-[#FF7700]",
     linkName: "Learn More",
-    linkHref: "https://www.instagram.com/qmmachinelearning/", // Replace with the actual link
+    linkHref: siteConfig.social.instagram,
   },
 ];
 

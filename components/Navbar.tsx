@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation'; // Import from next/navigation
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { siteConfig } from '@/lib/config';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,61 +26,19 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6 text-white font-medium">
-          <li>
-            <Link
-              href="/"
-              className={`relative overflow-hidden group ${pathname === '/' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'
-                } transition-colors duration-300`}
-              onClick={() => handleLinkClick()}
-            >
-              Home
-              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/what-we-do"
-              className={`relative overflow-hidden group ${pathname === '/what-we-do' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'
-                } transition-colors duration-300`}
-              onClick={() => handleLinkClick()}
-            >
-              What We Do
-              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/our-team"
-              className={`relative overflow-hidden group ${pathname === '/our-team' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'
-                } transition-colors duration-300`}
-              onClick={() => handleLinkClick()}
-            >
-              Our Team
-              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/gallery"
-              className={`relative overflow-hidden group ${pathname === '/gallery' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'
-                } transition-colors duration-300`}
-              onClick={() => handleLinkClick()}
-            >
-              Gallery
-              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contact"
-              className={`relative overflow-hidden group ${pathname === '/contact' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'
-                } transition-colors duration-300`}
-              onClick={() => handleLinkClick()}
-            >
-              Get in Touch
-              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-            </Link>
-          </li>
+          {siteConfig.navigation.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={`relative overflow-hidden group ${pathname === link.href ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'
+                  } transition-colors duration-300`}
+                onClick={() => handleLinkClick()}
+              >
+                {link.label}
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+              </Link>
+            </li>
+          ))}
         </ul>
 
         {/* Hamburger Icon */}
@@ -99,51 +58,18 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
         <ul className="md:hidden flex flex-col space-y-4 mt-4 px-4 text-white font-medium bg-[#04060b] pb-4">
-          <li>
-            <Link
-              href="/"
-              onClick={() => handleLinkClick()}
-              className={`${pathname === '/' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'} transition-colors duration-300`}
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/what-we-do"
-              onClick={() => handleLinkClick()}
-              className={`${pathname === '/what-we-do' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'} transition-colors duration-300`}
-            >
-              What We Do
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/our-team"
-              onClick={() => handleLinkClick()}
-              className={`${pathname === '/our-team' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'} transition-colors duration-300`}
-            >
-              Our Team
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/gallery"
-              onClick={() => handleLinkClick()}
-              className={`${pathname === '/gallery' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'} transition-colors duration-300`}
-            >
-              Gallery
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contact"
-              onClick={() => handleLinkClick()}
-              className={`${pathname === '/contact' ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'} transition-colors duration-300`}
-            >
-              Get in Touch
-            </Link>
-          </li>
+          {siteConfig.navigation.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                onClick={() => handleLinkClick()}
+                className={`${pathname === link.href ? 'text-[#FCA311]' : 'hover:text-[#FCA311]'
+                  } transition-colors duration-300`}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       )}
     </nav>

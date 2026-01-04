@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { siteConfig } from "@/lib/config";
 import { FaArrowRight, FaCalendar, FaClock, FaMapPin } from "react-icons/fa";
 
 export default function EducationPage() {
@@ -10,7 +11,8 @@ export default function EducationPage() {
       time: "5–6 PM",
       location: "Francis Bancroft Building 1.02.6",
       description:
-        "An introduction to Machine Learning, its real-world applications, Python basics, and fundamental mathematical concepts."
+        "An introduction to Machine Learning, its real-world applications, Python basics, and fundamental mathematical concepts.",
+      githubUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/tree/main/2024-2025/Lectures/lecture_01"
     },
     {
       title: "Lesson 2: Simple Linear Regression",
@@ -18,7 +20,8 @@ export default function EducationPage() {
       time: "6–7 PM",
       location: "Francis Bancroft Building 1.02.6",
       description:
-        "Covers supervised learning, simple linear regression, and introduces the use of derivatives in practice."
+        "Covers supervised learning, simple linear regression, and introduces the use of derivatives in practice.",
+      githubUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/tree/main/2024-2025/Lectures/lecture_02"
     },
     {
       title: "Lesson 3: Multiple Linear Regression",
@@ -26,7 +29,8 @@ export default function EducationPage() {
       time: "5–6 PM",
       location: "Francis Bancroft Building 1.02.6",
       description:
-        "Explores feature scaling, model evaluation with MSC and R², and an intro to overfitting/underfitting."
+        "Explores feature scaling, model evaluation with MSC and R², and an intro to overfitting/underfitting.",
+      githubUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/tree/main/2024-2025/Lectures/lecture_03"
     },
     {
       title: "Lesson 4: Neural Networks",
@@ -34,7 +38,8 @@ export default function EducationPage() {
       time: "5–6 PM",
       location: "Francis Bancroft Building 1.02.6",
       description:
-        "Introduction to neural networks, their architecture, activation functions, and a hands-on NumPy session."
+        "Introduction to neural networks, their architecture, activation functions, and a hands-on NumPy session.",
+      githubUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/tree/main/2024-2025/Lectures/lecture_04"
     },
     {
       title: "Lesson 5: Neural Networks II",
@@ -42,7 +47,8 @@ export default function EducationPage() {
       time: "5–6 PM",
       location: "Francis Bancroft Building 1.02.6",
       description:
-        "Delves deeper into forward pass, loss functions, backpropagation, and an interactive workshop."
+        "Delves deeper into forward pass, loss functions, backpropagation, and an interactive workshop.",
+      githubUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/tree/main/2024-2025/Lectures/lecture_05"
     },
     {
       title: "Lesson 6: Classification",
@@ -50,7 +56,8 @@ export default function EducationPage() {
       time: "5–6 PM",
       location: "Francis Bancroft Building 1.02.6",
       description:
-        "An overview of classification algorithms, evaluation metrics, and hands-on experience in building classifiers."
+        "An overview of classification algorithms, evaluation metrics, and hands-on experience in building classifiers.",
+      githubUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/tree/main/2024-2025/Lectures/lecture_06"
     },
     {
       title: "Lesson 7: Intro to Convolutional Neural Networks",
@@ -58,7 +65,8 @@ export default function EducationPage() {
       time: "5–6 PM",
       location: "David Sizer LT, Bancroft Building",
       description:
-        "Introduction to CNNs, including architecture (LeNet to ResNet), real-world applications, and training strategies."
+        "Introduction to CNNs, including architecture (LeNet to ResNet), real-world applications, and training strategies.",
+      githubUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/tree/main/2024-2025/Lectures/lecture_07"
     },
     {
       title: "Lesson 8: Implementing Large Language Models",
@@ -66,7 +74,8 @@ export default function EducationPage() {
       time: "5–6 PM",
       location: "David Sizer LT, Bancroft Building",
       description:
-        "Hands-on session covering LLMs, prompting, fine-tuning, deployment using OpenAI/Hugging Face APIs."
+        "Hands-on session covering LLMs, prompting, fine-tuning, deployment using OpenAI/Hugging Face APIs.",
+      githubUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/tree/main/2024-2025/Lectures/lecture_08"
     },
     {
       title: "Lesson 9: RL to Beat the Market",
@@ -74,7 +83,8 @@ export default function EducationPage() {
       time: "5–6 PM",
       location: "David Sizer LT, Bancroft Building",
       description:
-        "Explore reinforcement learning through the K-armed bandit problem and its application to trading strategies."
+        "Explore reinforcement learning through the K-armed bandit problem and its application to trading strategies.",
+      githubUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/tree/main/2024-2025/Lectures/lecture_09"
     },
     {
       title: "Lesson 10: Markov Decision Processes in RL",
@@ -82,7 +92,8 @@ export default function EducationPage() {
       time: "5–6 PM",
       location: "David Sizer LT, Bancroft Building",
       description:
-        "Understanding MDPs, Bellman equations, policy iteration, and exploration strategies in RL."
+        "Understanding MDPs, Bellman equations, policy iteration, and exploration strategies in RL.",
+      githubUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/tree/main/2024-2025/Lectures/lecture_10"
     },
     {
       title: "Lesson 11: RNNs & LSTMs in PyTorch",
@@ -90,7 +101,8 @@ export default function EducationPage() {
       time: "5–6 PM",
       location: "David Sizer LT, Bancroft Building",
       description:
-        "Introduction to RNNs and LSTMs with a focus on NLP and time-series using PyTorch."
+        "Introduction to RNNs and LSTMs with a focus on NLP and time-series using PyTorch.",
+      githubUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/tree/main/2024-2025/Lectures/lecture_11"
     },
     {
       title: "Lesson 12: LSTMs and Stock Prediction Demo",
@@ -98,7 +110,8 @@ export default function EducationPage() {
       time: "5–6 PM",
       location: "David Sizer LT, Bancroft Building",
       description:
-        "A demo on how LSTMs are used in stock forecasting. Understand vanishing gradients and architecture tweaks."
+        "A demo on how LSTMs are used in stock forecasting. Understand vanishing gradients and architecture tweaks.",
+      githubUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/tree/main/2024-2025/Lectures/lecture_12"
     }
   ];
   const sortedLessons = [...lessons].sort((a, b) => b.date.getTime() - a.date.getTime());
@@ -174,10 +187,12 @@ export default function EducationPage() {
                     {lesson.description}
                   </p>
 
-                  <button className="flex items-center gap-2 px-6 py-3 bg-[#FCA311]/10 hover:bg-[#FCA311]/20 text-[#FCA311] rounded-full transition-all duration-300">
-                    <span>View Materials</span>
-                    <FaArrowRight className="w-4 h-4" />
-                  </button>
+                  <Link href={lesson.githubUrl} target="_blank" rel="noopener noreferrer">
+                    <button className="flex items-center gap-2 px-6 py-3 bg-[#FCA311]/10 hover:bg-[#FCA311]/20 text-[#FCA311] rounded-full transition-all duration-300">
+                      <span>View Materials</span>
+                      <FaArrowRight className="w-4 h-4" />
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaArrowRight } from "react-icons/fa";
 
 export default function CompetitionsPage() {
   const workshops = [
@@ -8,100 +8,134 @@ export default function CompetitionsPage() {
       date: new Date("2024-11-15"),
       location: "Francis Bancroft Building 1.02.6",
       time: "6-7 PM",
-      description: "Live coding session, demonstrating how to create a baseline Kaggle submission from scratch. Formed skill-based teams of four with dedicated Slack channels for collaboration. Concluded the workshop with a social icebreaker."
+      description: "Live coding session, demonstrating how to create a baseline Kaggle submission from scratch. Formed skill-based teams of four with dedicated Slack channels for collaboration. Concluded the workshop with a social icebreaker.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/01_kaggle_seasons.pdf"
     },
     {
       title: "Kaggle Seasons Workshop 2",
       date: new Date("2024-11-22"),
       location: "Francis Bancroft Building 1.02.6",
       time: "6-7 PM",
-      description: "In-depth lecture evaluating how Kaggle problems can be approached. Sharing the approach that scored in the top 21%. The first Kaggle competition in the Kaggle Seasons circuit."
+      description: "In-depth lecture evaluating how Kaggle problems can be approached. Sharing the approach that scored in the top 21%. The first Kaggle competition in the Kaggle Seasons circuit.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/02_kaggle_seasons.pdf"
     },
     {
       title: "Kaggle Seasons Workshop 3",
       date: new Date("2024-11-29"),
       location: "Francis Bancroft Building 1.02.6",
       time: "6-7 PM",
-      description: "Presentation on data preprocessing – specifically encoding and missing data handling. Shared a detailed template for a Kaggle submission, based on simple logistic regression, mode imputation, and label encoding."
+      description: "Presentation on data preprocessing – specifically encoding and missing data handling. Shared a detailed template for a Kaggle submission, based on simple logistic regression, mode imputation, and label encoding.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/03_kaggle_seasons.pdf"
     },
     {
       title: "Kaggle Seasons Workshop 4",
       date: new Date("2024-12-06"),
       location: "Francis Bancroft Building 1.02.6",
       time: "6-8 PM",
-      description: "4-week AI/ML Challenge starts."
+      description: "4-week AI/ML Challenge starts.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/04_kaggle_seasons.pdf"
     },
     {
       title: "Kaggle Seasons Workshop 5",
       date: new Date("2024-12-13"),
       location: "Francis Bancroft Building 1.02.6",
       time: "5-8 PM",
-      description: "Christmas Hackathon."
+      description: "Christmas Hackathon.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/05_kaggle_seasons.pdf"
     },
     {
       title: "Kaggle Seasons Workshop 6",
       date: new Date("2025-02-06"),
       location: "David Sizer LT, Bancroft Building",
       time: "6-8 PM",
-      description: "Introduction to gradient boosting algorithms, how they work, and their importance. Newcomers were assigned to new teams and all teams started the February Kaggle playground competition."
+      description: "Introduction to gradient boosting algorithms, how they work, and their importance. Newcomers were assigned to new teams and all teams started the February Kaggle playground competition.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/06_kaggle_seasons.pdf"
     },
     {
       title: "Kaggle Seasons Workshop 7",
       date: new Date("2025-02-13"),
       location: "David Sizer LT, Bancroft Building",
       time: "6-8 PM",
-      description: "Worked through examples of gradient boosting, introduced new members to competitive ML coding with a live coding session, implementing gradient boosting in Python. Teams continued working on the February Kaggle playground competition."
+      description: "Worked through examples of gradient boosting, introduced new members to competitive ML coding with a live coding session, implementing gradient boosting in Python. Teams continued working on the February Kaggle playground competition.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/07_kaggle_seasons.pdf"
     },
     {
       title: "Kaggle Seasons Workshop 8",
       date: new Date("2025-02-20"),
       location: "David Sizer LT, Bancroft Building",
       time: "6-8 PM",
-      description: "Walkthrough of PCA and how to interpret principal components and variance along each axis. Teams continued their work on the February Kaggle Playground competition."
+      description: "Walkthrough of PCA and how to interpret principal components and variance along each axis. Teams continued their work on the February Kaggle Playground competition.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/08_kaggle_seasons.pdf"
     },
     {
       title: "Kaggle Seasons Workshop 9",
       date: new Date("2025-02-27"),
       location: "David Sizer LT, Bancroft Building",
       time: "6-8 PM",
-      description: "Introduction to ensemble learning, bagging, boosting, and stacking. Teams finalized submissions for the February Kaggle Playground series."
+      description: "Introduction to ensemble learning, bagging, boosting, and stacking. Teams finalized submissions for the February Kaggle Playground series.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/09_kaggle_seasons.pdf"
     },
     {
       title: "Kaggle Seasons Workshop 10",
       date: new Date("2025-03-06"),
       location: "David Sizer LT, Bancroft Building",
       time: "6-8 PM",
-      description: "Introduction to Kaggle’s brand-new package feature and Python packages. Launch of Kaggle industry competitions, marking the step-up from Kaggle Playground series to real-world challenges."
+      description: "Introduction to Kaggle's brand-new package feature and Python packages. Launch of Kaggle industry competitions, marking the step-up from Kaggle Playground series to real-world challenges.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/10_kaggle_seasons.pdf"
     },
     {
       title: "Kaggle Seasons Workshop 11",
       date: new Date("2025-03-13"),
       location: "David Sizer LT, Bancroft Building",
       time: "6-8 PM",
-      description: "Walkthrough of how to make the first submission in our first-ever Industry Competition."
+      description: "Walkthrough of how to make the first submission in our first-ever Industry Competition.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/11_kaggle_seasons.pdf"
     },
     {
-      title: "Kaggle Seasons Special Session",
+      title: "Kaggle Seasons Workshop 12 (Special Session)",
       date: new Date("2025-03-20"),
       location: "David Sizer LT, Bancroft Building",
       time: "5:00-7:00 PM",
-      description: "Manu’s ML Roadmap, Introduction to Fake News Detection, followed by a Mini Hackathon."
+      description: "Manu's ML Roadmap, Introduction to Fake News Detection, followed by a Mini Hackathon.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/12-Kaggle-Seasons.pdf"
+    },
+    {
+      title: "Kaggle Seasons Workshop 13",
+      date: new Date("2025-03-27"),
+      location: "David Sizer LT, Bancroft Building",
+      time: "6-8 PM",
+      description: "Maximizing Kaggle resources for the Drawing with LLMs competition. Explored public notebooks, Kaggle models, and hidden gems in the forums.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/13_Kaggle_Seasons.pdf"
+    },
+    {
+      title: "Kaggle Seasons Workshop 14",
+      date: new Date("2025-04-03"),
+      location: "David Sizer LT, Bancroft Building",
+      time: "6-8 PM",
+      description: "Beginner-friendly session introducing the Kaggle Playground Series and Kaggle Learn. Live coding session building a sample submission using the general Kaggle competition template.",
+      pdfUrl: "https://github.com/Queen-Mary-Machine-Learning-Society/QMML/blob/main/2024-2025/competitions/kaggle_seasons/weekly_session_slides/14_kaggle_seasons.pdf"
     }
   ];
 
   const sortedWorkshops = [...workshops].sort((a, b) => b.date.getTime() - a.date.getTime());
 
   const leaderboardData = [
-    { rank: 1, team: "JoFraMo", level: 2, total: 6, dec24: 0, nov24: 6 },
-    { rank: 2, team: "CodeBlAIzers", level: 2, total: 6, dec24: 6, nov24: 0 },
-    { rank: 3, team: "Eastern European Invasion", level: 3, total: 5, dec24: 0, nov24: 5 },
-    { rank: 4, team: "Herb", level: 2, total: 4, dec24: 0, nov24: 4 },
-    { rank: 5, team: "Buckshots", level: 1, total: 3, dec24: 0, nov24: 3 },
-    { rank: 6, team: "Big Data Energy", level: 1, total: 2, dec24: 0, nov24: 2 },
-    { rank: 7, team: "RKRA (ARR)", level: 1, total: 1, dec24: 0, nov24: 1 },
-    { rank: 8, team: "Tanisha Srivastava", level: 2, total: 1, dec24: 0, nov24: 1 },
-    { rank: 9, team: "The A-team", level: 1, total: 0, dec24: 0, nov24: 0 },
-    { rank: 10, team: "Dunder Mifflin", level: 3, total: 0, dec24: 0, nov24: 0 },
+    { rank: 1, team: "Cosine Singularity", level: 3, total: 8.5, feb25: 6, dec24: 0, nov24: 5 },
+    { rank: 2, team: "JoFraMo", level: 2, total: 7, feb25: 4, dec24: 0, nov24: 6 },
+    { rank: 3, team: "Herb", level: 2, total: 6, feb25: 2, dec24: 6, nov24: 4 },
+    { rank: 4, team: "AgEmOl", level: 3, total: 5, feb25: 5, dec24: 0, nov24: 0 },
+    { rank: 5, team: "Data Explorers", level: 1, total: 4, feb25: 4, dec24: 0, nov24: 0 },
+    { rank: 6, team: "Convolutional Neural Noodles", level: 1, total: 3, feb25: 3, dec24: 0, nov24: 0 },
+    { rank: 7, team: "Codeblaizers", level: 2, total: 1.7, feb25: 0, dec24: 5, nov24: 0 },
+    { rank: 8, team: "Buckshots", level: 1, total: 1.5, feb25: 0, dec24: 0, nov24: 3 },
+    { rank: 9, team: "Big Data Energy", level: 1, total: 1, feb25: 0, dec24: 0, nov24: 2 },
+    { rank: 10, team: "Last Minute", level: 2, total: 1, feb25: 1, dec24: 0, nov24: 0 },
+    { rank: 11, team: "AMIT_x7S", level: 1, total: 1, feb25: 1, dec24: 0, nov24: 0 },
+    { rank: 12, team: "RKRA (ARR)", level: 1, total: 0.5, feb25: 0, dec24: 0, nov24: 1 },
+    { rank: 13, team: "Tanisha Srivastava", level: 2, total: 0.5, feb25: 0, dec24: 0, nov24: 1 },
+    { rank: 14, team: "The A-team", level: 1, total: 0, feb25: 0, dec24: 0, nov24: 0 },
+    { rank: 15, team: "Dunder Mifflin", level: 3, total: 0, feb25: 0, dec24: 0, nov24: 0 },
+    { rank: 16, team: "Nameless Team", level: 1, total: 0, feb25: 0, dec24: 0, nov24: 0 },
   ];
 
   return (
@@ -147,6 +181,12 @@ export default function CompetitionsPage() {
                 <p className="text-gray-300 mt-2 leading-relaxed">
                   {workshop.description}
                 </p>
+                <Link href={workshop.pdfUrl} target="_blank" rel="noopener noreferrer" className="inline-block mt-4">
+                  <button className="flex items-center gap-2 px-6 py-3 bg-[#FCA311]/10 hover:bg-[#FCA311]/20 text-[#FCA311] rounded-full transition-all duration-300">
+                    <span>View Slides</span>
+                    <FaArrowRight className="w-4 h-4" />
+                  </button>
+                </Link>
               </div>
             </div>
           ))}
@@ -166,6 +206,7 @@ export default function CompetitionsPage() {
                   <th className="p-4 text-left">Team</th>
                   <th className="p-4 text-center">Level</th>
                   <th className="p-4 text-center">Total</th>
+                  <th className="p-4 text-center">02/2025</th>
                   <th className="p-4 text-center">12/2024</th>
                   <th className="p-4 text-center">11/2024</th>
                 </tr>
@@ -193,6 +234,7 @@ export default function CompetitionsPage() {
                       </div>
                     </td>
                     <td className="p-4 text-center font-bold">{team.total}</td>
+                    <td className="p-4 text-center">{team.feb25}</td>
                     <td className="p-4 text-center">{team.dec24}</td>
                     <td className="p-4 text-center">{team.nov24}</td>
                   </tr>
